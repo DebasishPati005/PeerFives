@@ -2,6 +2,21 @@ import { Request, Response, NextFunction } from 'express';
 import { UserRequest, UserResponse } from '../types';
 import { User } from '../models/user.model';
 
+export const getAllUsers = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const users: UserResponse[] | null = await User.find();
+        return res.json({ users });
+    } catch (error) {
+        return res.json({
+            error,
+        });
+    }
+};
+
 export const getUserData = async (
     req: Request,
     res: Response,

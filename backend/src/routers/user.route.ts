@@ -3,6 +3,8 @@ import * as userController from '../controllers/user.controller';
 
 const router = Router();
 
+router.get('/all', userController.getAllUsers);
+
 router.get('/get/:id', userController.getUserData);
 
 router.post('/create', userController.createUser);
